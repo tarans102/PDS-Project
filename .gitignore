@@ -1,0 +1,11 @@
+.env
+Lib
+Scripts
+__pycache__
+*.pyc
+*.cfg
+*.pdf
+*.csv
+Include
+MovieRecommender/TMDB
+MovieRecommender/TheMovies

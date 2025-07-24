@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="./images/movie logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Flix
+    </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'grid.css' %}">
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+</head>
+
+<body>
+
+    <div class="nav-wrapper">
+        <div class="container">
+            <div class="nav">
+                <a href="#" class="logo">
+                    <i class='bx bx-movie-play main-color'></i>Fl<span class="main-color">i</span>x
+                </a>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li>
+                        <a class="btn btn-hover" id="signInBtn">
+                            <span>Sign in</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <div class="hamburger"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                User Collaborative Filtering
+            </div>
+            <div class="movies-slide carousel-nav-center owl-carousel">
+                {% for movie in collabMoviesList %}
+                <a href="{% url 'moviePage' movie.id %}" class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="">
+                    <div class="movie-item-content">
+                        <div class="movie-item-title">
+                            {{movie.title}}
+                        </div>
+                        <div class="movie-infos">
+                            <div class="movie-info">
+                                <i class="bx bxs-star"></i>
+                                <span>{{movie.rating}}</span>
+                            </div>
+                            <div class="movie-info">
+                                <i class="bx bxs-time"></i>
+                                <span>{{movie.runtime}} mins</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>HD</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>16+</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                Movies based on description
+            </div>
+            <div class="movies-slide carousel-nav-center owl-carousel">
+                {% for movie in overviewMoviesList %}
+                <a href="{% url 'moviePage' movie.id %}" class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="">
+                    <div class="movie-item-content">
+                        <div class="movie-item-title">
+                            {{movie.title}}
+                        </div>
+                        <div class="movie-infos">
+                            <div class="movie-info">
+                                <i class="bx bxs-star"></i>
+                                <span>{{movie.rating}}</span>
+                            </div>
+                            <div class="movie-info">
+                                <i class="bx bxs-time"></i>
+                                <span>{{movie.runtime}} mins</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>HD</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>16+</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                Movies based on cast
+            </div>
+            <div class="movies-slide carousel-nav-center owl-carousel">
+                {% for movie in castMoviesList %}
+                <a href="{% url 'moviePage' movie.id %}" class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="">
+                    <div class="movie-item-content">
+                        <div class="movie-item-title">
+                            {{movie.title}}
+                        </div>
+                        <div class="movie-infos">
+                            <div class="movie-info">
+                                <i class="bx bxs-star"></i>
+                                <span>{{movie.rating}}</span>
+                            </div>
+                            <div class="movie-info">
+                                <i class="bx bxs-time"></i>
+                                <span>{{movie.runtime}} mins</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>HD</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>16+</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                Movies based on keywords
+            </div>
+            <div class="movies-slide carousel-nav-center owl-carousel">
+                {% for movie in keywordsMoviesList %}
+                <a href="{% url 'moviePage' movie.id %}" class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="">
+                    <div class="movie-item-content">
+                        <div class="movie-item-title">
+                            {{movie.title}}
+                        </div>
+                        <div class="movie-infos">
+                            <div class="movie-info">
+                                <i class="bx bxs-star"></i>
+                                <span>{{movie.rating}}</span>
+                            </div>
+                            <div class="movie-info">
+                                <i class="bx bxs-time"></i>
+                                <span>{{movie.runtime}} mins</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>HD</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>16+</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                Movies based on genre
+            </div>
+            <div class="movies-slide carousel-nav-center owl-carousel">
+                {% for movie in genreMoviesList %}
+                <a href="{% url 'moviePage' movie.id %}" class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="">
+                    <div class="movie-item-content">
+                        <div class="movie-item-title">
+                            {{movie.title}}
+                        </div>
+                        <div class="movie-infos">
+                            <div class="movie-info">
+                                <i class="bx bxs-star"></i>
+                                <span>{{movie.rating}}</span>
+                            </div>
+                            <div class="movie-info">
+                                <i class="bx bxs-time"></i>
+                                <span>{{movie.runtime}} mins</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>HD</span>
+                            </div>
+                            <div class="movie-info">
+                                <span>16+</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="signInModalContainer">
+        <div id="signInModal">
+            <div>Login using UserID</div>
+            <form action="{% url 'index'%}" method="post" id="loginForm">
+                {% csrf_token %}
+                <input type="text" name="userID" id="userID">
+                <input type="submit" value="Login" id="submitButton" class="btn btn-hover">
+            </form>
+        </div>
+    </div>
+    <div class="someSpace"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- OWL CAROUSEL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+    <!-- APP SCRIPT -->
+    <script src="{% static 'app.js' %}"></script>
+</body>
+
+</html>
